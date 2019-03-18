@@ -1,0 +1,17 @@
+$trolleyGray: #7C7C7C;
+$trolleyBlack: #4b4b4b;
+$roseTaupe: #8B635C;
+$ghostWhite: #F7F9F9;
+.List{
+  padding: 50px 0;
+  text-align: center;
+  h2{
+    color: $trolleyBlack;
+    padding-bottom: 30px;
+  }
+  .list-of-offers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,15 @@
+$trolleyGray: #7C7C7C;
+$roseTaupe: #8B635C;
+$ghostWhite: #F7F9F9;
+.footer{
+    padding: 15px 0;
+    background: $trolleyGray;
+    a {
+        color: $ghostWhite;
+    }
+    .container{
+        span{
+            color: $ghostWhite;
+        }
+    }
+}

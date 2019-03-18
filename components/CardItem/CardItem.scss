@@ -1,0 +1,20 @@
+$trolleyGray: #7C7C7C;
+$trolleyBlack: #4b4b4b;
+$roseTaupe: #8B635C;
+$ghostWhite: #F7F9F9;
+.CardItem{
+  min-width: 250px;
+  height: 350px;
+  border: 2px solid $trolleyGray;
+  border-radius: 5px;
+  margin: 5px;
+  flex: 1;
+  max-width: 300px;
+  padding: 15px 0;
+  img{
+    width: 80%;
+  }
+  p{
+    margin: 0;
+  }
+}

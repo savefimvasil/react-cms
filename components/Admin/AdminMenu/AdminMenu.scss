@@ -1,0 +1,27 @@
+$trolleyGray: #7C7C7C;
+$roseTaupe: #8B635C;
+$ghostWhite: #F7F9F9;
+.AdminMenu{
+  display: flex;
+  h1{
+    text-align: center;
+  }
+  a{
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    background: $trolleyGray;
+    color: $ghostWhite;
+    font-size: 20px;
+    transition: .2s;
+    &:hover{
+      background: $ghostWhite;
+      color: $trolleyGray;
+      text-decoration: none;
+    }
+    &:focus{
+      background: $ghostWhite;
+      color: $trolleyGray;
+    }
+  }
+}

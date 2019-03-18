@@ -1,0 +1,41 @@
+$trolleyGray: #7C7C7C;
+$roseTaupe: #8B635C;
+$ghostWhite: #F7F9F9;
+.header{
+  background: $trolleyGray;
+  position: fixed;
+  width: 100%;
+  .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo{
+      a{
+        display: block;
+        font-size: 20px;
+        padding: 10px;
+        color: $ghostWhite;
+        border-bottom: 4px solid transparent;
+        border-top: 4px solid transparent;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+    }
+    .nawbar{
+      display: flex;
+      a{
+        display: block;
+        font-size: 20px;
+        padding: 10px;
+        color: $ghostWhite;
+        border-bottom: 4px solid transparent;
+        border-top: 4px solid transparent;
+        &:hover{
+          text-decoration: none;
+          border-top: 4px solid $ghostWhite;
+        }
+      }
+    }
+  }
+}
