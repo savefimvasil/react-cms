@@ -1,5 +1,5 @@
 const routes = module.exports = require('next-routes')()
 
 routes
-    .add('admin', '/admin/:slug', '/admin/edit/:id')
+    .add('admin', '/admin/:slug')
     .add('list', '/list/:slug')

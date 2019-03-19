@@ -9,6 +9,10 @@ class ListTable extends Component {
         this.props.dispatch({ type: "deletePost", payload: id })
     }
 
+    goToEdit = (id) => {
+        Router.push('/admin/edit?id=' + id)
+    }
+
     render() {
         return(
             <table className="table">
@@ -29,7 +33,7 @@ class ListTable extends Component {
                             >
                                 <td>{a.titleUA}</td>
                                 <td>{a.postBodyMiniUA}</td>
-                                <td><Link route={'/admin/edit?id=' + a._id}><a>edit</a></Link></td>
+                                <td><a onClick={() => this.goToEdit(a._id)}>edit</a></td>
                                 <td><a onClick={() => this.deleteItem(a._id)}>del</a></td>
                             </tr>
                         )
