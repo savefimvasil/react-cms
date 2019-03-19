@@ -4,6 +4,7 @@ import {Provider} from "react-redux";
 import App, {Container} from "next/app";
 import withRedux from "next-redux-wrapper";
 import axios from 'axios'
+import {Router} from '../routes'
 
 async function getAllPosts() {
     let url = 'http://localhost:4000/listHome';
@@ -17,10 +18,16 @@ async function getAllPosts() {
 
 const reducer = async (state = {foo: ''}, action) => {
     switch (action.type) {
-        case 'getAllPosts':
-        {
+        case 'getAllPosts': {
             let a = await getAllPosts()
             return({...state, 'allPosts': a})
+        }
+        case 'deletePost': {
+            let url = `http://localhost:4000/listHome/delete/${action.payload}`;
+            axios.delete(url).then(response => {
+                Router.push("/admin");
+            });
+            break
         }
         default:
             return state

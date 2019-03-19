@@ -4,22 +4,29 @@ import Default from '../layouts/default'
 import {Router, Route} from '../routes'
 import ListOfOffers from '../components/ListOfOffers/ListOfOffers'
 import OfferPage from '../components/OfferPage/OfferPage'
+import {connect} from "react-redux";
 
 const fakePromise = data =>
     new Promise((resolve, reject) => setTimeout(() => resolve(data), 100));
 
 
 class List extends Component {
-    static async getInitialProps({ query }) {
+    static async getInitialProps({ query, store }) {
+        await store.dispatch({ type: "getAllPosts", payload: "foo1" });
+        const list = await store.getState()
         const data = await fakePromise({
             slug: query.slug
         });
-        return { data };
+        return { list, data };
     }
 
     renderListPage = () => {
         return (
-            <ListOfOffers/>
+            <ListOfOffers
+                title={'Лучшие предложения'}
+                count={4}
+                data={this.props.list.allPosts}
+            />
         )
     };
     renderItemPage =() => {
@@ -46,4 +53,4 @@ class List extends Component {
 
 }
 
-export default List
+export default connect(state => state)(List);

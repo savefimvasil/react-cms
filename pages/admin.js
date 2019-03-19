@@ -10,11 +10,14 @@ const fakePromise = data =>
     new Promise((resolve, reject) => setTimeout(() => resolve(data), 100));
 
 class Admin extends Component {
-    static async getInitialProps({ query }) {
+    static async getInitialProps({ query, store }) {
+        await store.dispatch({ type: "getAllPosts", payload: "foo1" });
+        const list = await store.getState()
+
         const data = await fakePromise({
             slug: query.slug
         });
-        return { data };
+        return { data, list };
     }
 
     renderAddComp = () => {
@@ -24,7 +27,9 @@ class Admin extends Component {
     };
     renderEditComp = () => {
         return(
-            <EditComp/>
+            <EditComp
+                data={this.props.list.allPosts}
+            />
         )
     };
     renderErrComp = () => {

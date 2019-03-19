@@ -36,11 +36,6 @@ class ListOfOffers extends Component {
         ]
     }
 
-    componentWillMount() {
-        console.log(this.props.data)
-        console.log(this.state.list);
-    }
-
     render() {
         return (
             <div className={'List container'}>
