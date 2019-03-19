@@ -6,7 +6,7 @@ import withRedux from "next-redux-wrapper";
 import axios from 'axios'
 
 async function getAllPosts() {
-    let url = 'http://localhost:4000/news';
+    let url = 'http://localhost:4000/listHome';
     let adds = []
     await axios.get(url)
         .then(response => {

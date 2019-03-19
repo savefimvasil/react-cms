@@ -1,3 +1,3 @@
 module.exports = {
-    DB: 'mongodb://localhost:27017/ski-rent'
+    DB: 'mongodb://localhost:27017/boiko-app'
 }
