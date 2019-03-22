@@ -21,7 +21,6 @@ class AddComp extends Component {
 
     sendData(e) {
         let url = 'http://localhost:4000/listHome/add';
-        console.log(this.state)
         axios.post(url, this.state).then(() => {
             Router.push("/admin");
         });

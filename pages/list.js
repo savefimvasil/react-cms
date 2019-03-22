@@ -50,7 +50,13 @@ class List extends Component {
             </Default>
         )
     }
-
 }
 
-export default connect(state => state)(List);
+
+const mapStateToProps = function(state) {
+    return {
+        state: state
+    }
+}
+
+export default connect(mapStateToProps)(List);

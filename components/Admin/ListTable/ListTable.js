@@ -45,4 +45,10 @@ class ListTable extends Component {
     }
 }
 
-export default connect(state => state)(ListTable)
+const mapStateToProps = function(state) {
+    return {
+        state: state
+    }
+}
+
+export default connect(mapStateToProps)(ListTable)

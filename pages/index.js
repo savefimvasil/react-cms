@@ -28,4 +28,11 @@ class Index extends Component {
     }
 }
 
-export default connect(state => state)(Index);
+
+const mapStateToProps = function(state) {
+    return {
+        state: state
+    }
+}
+
+export default connect(mapStateToProps)(Index);

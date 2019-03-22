@@ -1,0 +1,10 @@
+.Index{
+    padding: 30px 50px;
+    .form-group{
+        display: flex;
+        flex-direction: column
+    }
+    button{
+        width: 150px;
+    }
+}
