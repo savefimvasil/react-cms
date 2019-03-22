@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './EditForm.scss'
 import axios from 'axios'
 import { Router } from '../../../routes'
+import {connect} from "react-redux";
 
 class EditForm extends Component {
     state = {
@@ -28,12 +29,7 @@ class EditForm extends Component {
     }
 
     sendData(e) {
-        let id = this.props.id
-        let uri = `http://localhost:4000/listHome/update/${id}`;
-        const data = this.state
-        axios.post(uri, data).then(() => {
-            Router.push('/admin')
-        });
+        this.props.dispatch({ type: "updatePostById", payload: {id: this.props.id, data: this.state} })
     }
 
     render() {
@@ -101,4 +97,10 @@ class EditForm extends Component {
     }
 }
 
-export default EditForm
+const mapStateToProps = function(state) {
+    return {
+        state: state
+    }
+}
+
+export default connect(mapStateToProps)(EditForm)

@@ -4,6 +4,7 @@ import axios from 'axios'
 import AdminMenu from '../../../components/Admin/AdminMenu/AdminMenu'
 import Default from '../../../layouts/default'
 import { Router } from '../../../routes'
+import {connect} from "react-redux";
 
 class AddComp extends Component {
     state = {
@@ -22,10 +23,7 @@ class AddComp extends Component {
     }
 
     sendData(e) {
-        let url = 'http://localhost:4000/listHome/add';
-        axios.post(url, this.state).then(() => {
-            Router.push("/admin");
-        });
+        this.props.dispatch({ type: "addPost", payload: this.state })
     }
 
     render() {
@@ -73,4 +71,10 @@ class AddComp extends Component {
     }
 }
 
-export default AddComp
+const mapStateToProps = function(state) {
+    return {
+        state: state
+    }
+}
+
+export default connect(mapStateToProps)(AddComp)

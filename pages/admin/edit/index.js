@@ -6,6 +6,7 @@ import AdminMenu from '../../../components/Admin/AdminMenu/AdminMenu'
 import ListTable from '../../../components/Admin/ListTable/ListTable'
 import EditForm from '../../../components/Admin/EditForm/EditForm'
 import {Router} from "../../../routes";
+import axios from "axios";
 
 
 class EditComp extends Component {
@@ -41,6 +42,7 @@ class EditComp extends Component {
     renderEditPage = () => {
         return(
             <EditForm
+                getData={this.getData}
                 id={Router.router.query.id}
             />
         )
