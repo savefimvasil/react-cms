@@ -16,10 +16,7 @@ class EditForm extends Component {
     }
 
     componentWillMount() {
-        let url = `http://localhost:4000/listHome/select/${this.props.id}`;
-        axios.get(url).then((response) => {
-            this.setState(response.data)
-        });
+        this.setState(this.props.data)
     }
 
     changeHandler(e, item) {

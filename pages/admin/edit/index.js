@@ -6,10 +6,10 @@ import AdminMenu from '../../../components/Admin/AdminMenu/AdminMenu'
 import ListTable from '../../../components/Admin/ListTable/ListTable'
 import EditForm from '../../../components/Admin/EditForm/EditForm'
 import {Router} from "../../../routes";
-import axios from "axios";
 
 
 class EditComp extends Component {
+
     constructor() {
         super();
         this.state = {
@@ -20,7 +20,12 @@ class EditComp extends Component {
     static async getInitialProps({ store, isServer, pathname, query }) {
         await store.dispatch({ type: "getAllPosts" });
         const data = await store.getState()
-        return {data}
+        let postById
+        if(query.id) {
+            await store.dispatch({type: "getPostById", payload: query.id})
+            postById = await store.getState()
+        }
+        return {data, postById }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -42,7 +47,7 @@ class EditComp extends Component {
     renderEditPage = () => {
         return(
             <EditForm
-                getData={this.getData}
+                data={this.props.postById.postById}
                 id={Router.router.query.id}
             />
         )

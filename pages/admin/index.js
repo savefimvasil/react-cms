@@ -11,7 +11,6 @@ class Index extends Component {
     static async getInitialProps({ query, store }) {
         await store.dispatch({ type: "getAllPosts", payload: "foo1" });
         const list = await store.getState()
-
         const data = await fakePromise({
             slug: query.slug
         });
