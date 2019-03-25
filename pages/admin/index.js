@@ -9,7 +9,7 @@ const fakePromise = data =>
 
 class Index extends Component {
     static async getInitialProps({ query, store }) {
-        await store.dispatch({ type: "getAllPosts", payload: "foo1" });
+        await store.dispatch({ type: "getAllPosts" });
         const list = await store.getState()
         const data = await fakePromise({
             slug: query.slug

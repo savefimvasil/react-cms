@@ -7,50 +7,53 @@ import ListTable from '../../../components/Admin/ListTable/ListTable'
 import EditForm from '../../../components/Admin/EditForm/EditForm'
 import {Router} from "../../../routes";
 
-
 class EditComp extends Component {
-
     constructor() {
         super();
         this.state = {
-            isEdit: false
+            isEdit: false,
+            id: null
         }
     }
 
-    static async getInitialProps({ store, isServer, pathname, query }) {
+    static async getInitialProps({ store, state, isServer, pathname, query }) {
         await store.dispatch({ type: "getAllPosts" });
         const data = await store.getState()
         let postById
         if(query.id) {
             await store.dispatch({type: "getPostById", payload: query.id})
             postById = await store.getState()
-        }
+        } else postById = data
         return {data, postById }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(!this.state.isEdit && Router.router.query.id){
             this.setState({
-                isEdit: 'true'
+                isEdit: true,
+            })
+        } else if(this.state.isEdit && !Router.router.query.id){
+            this.setState({
+                isEdit: false,
             })
         }
     }
 
     renderTable = () => {
-        return (
-            <ListTable
-                data={this.props.data.allPosts}
-            />
-        )
-    }
-
-    renderEditPage = () => {
-        return(
-            <EditForm
-                data={this.props.postById.postById}
-                id={Router.router.query.id}
-            />
-        )
+        if(this.state.isEdit) {
+            return(
+                <EditForm
+                    data={this.props.postById.postById}
+                    id={Router.router.query.id}
+                />
+            )
+        } else {
+            return (
+                <ListTable
+                    data={this.props.data.allPosts}
+                />
+            )
+        }
     }
 
     render() {
@@ -59,9 +62,7 @@ class EditComp extends Component {
                 <div className={'container'}>
                     <AdminMenu/>
                     {
-                        this.state.isEdit ?
-                            this.renderEditPage():
-                            this.renderTable()
+                        this.renderTable()
                     }
                 </div>
             </Default>
